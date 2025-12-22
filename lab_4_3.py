@@ -101,6 +101,40 @@ if __name__ == "__main__":
 
     print("Демонстрацію завершено.")
 
+""" Завантаження моделей та запуск демо...
+
+--- 1. Zero-Shot Classification (Класифікація без навчання) ---
+config.json:  1.07k/? [00:00<00:00, 84.5kB/s]model.safetensors: 100% 558M/558M [00:07<00:00, 140MB/s]tokenizer_config.json:  1.26k/? [00:00<00:00, 126kB/s]spm.model: 100% 4.31M/4.31M [00:02<00:00, 1.46MB/s]tokenizer.json: 100% 16.3M/16.3M [00:02<00:00, 6.79MB/s]added_tokens.json: 100% 23.0/23.0 [00:00<00:00, 2.57kB/s]special_tokens_map.json: 100% 286/286 [00:00<00:00, 35.0kB/s]Device set to use cuda:0
+Текст: Інтерфейс цієї програми дуже зручний, але ціна зависока для звичайного користувача.
+Категорії: ['технології', 'політика', 'фінанси', 'відгук про продукт']
+
+Результат:
+- фінанси: 0.6149
+- технології: 0.3311
+- відгук про продукт: 0.0492
+- політика: 0.0048
+
+
+--- 2. Summarization (Сумаризація тексту) ---
+config.json: 100% 730/730 [00:00<00:00, 47.4kB/s]pytorch_model.bin: 100% 2.33G/2.33G [00:27<00:00, 44.4MB/s]model.safetensors: 100% 2.33G/2.33G [00:51<00:00, 59.5MB/s]tokenizer_config.json: 100% 375/375 [00:00<00:00, 42.9kB/s]spiece.model: 100% 4.31M/4.31M [00:04<00:00, 1.23MB/s]special_tokens_map.json: 100% 65.0/65.0 [00:00<00:00, 2.14kB/s]You are using the default legacy behaviour of the <class 'transformers.models.t5.tokenization_t5.T5Tokenizer'>. This is expected, and simply means that the `legacy` (previous) behavior will be used so nothing changes for you. If you want to use the new behaviour, set `legacy=False`. This should only be set if you understand what it means, and thoroughly read the reason why this was added as explained in https://github.com/huggingface/transformers/pull/24565
+Device set to use cuda:0
+Оригінальний текст (уривок):
+Київська Русь — середньовічна монархічна держава у Східній Європі зі столицею в Києві. 
+    Вона виникла в IX столітті в результаті об'єднання східнос...
+
+Результат (Сумаризація):
+Київська Русь - одна з найбільших монархічних держав у Східній Європі.
+
+
+--- 3. Translation (Переклад) ---
+config.json:  1.38k/? [00:00<00:00, 60.7kB/s]pytorch_model.bin: 100% 305M/305M [00:06<00:00, 62.7MB/s]generation_config.json: 100% 293/293 [00:00<00:00, 21.2kB/s]tokenizer_config.json: 100% 42.0/42.0 [00:00<00:00, 4.90kB/s]model.safetensors: 100% 305M/305M [00:40<00:00, 5.44MB/s]source.spm: 100% 1.01M/1.01M [00:00<00:00, 21.8MB/s]target.spm: 100% 809k/809k [00:00<00:00, 45.6MB/s]vocab.json:  2.37M/? [00:00<00:00, 72.1MB/s]Device set to use cuda:0
+Оригінал: Штучний інтелект стрімко розвивається і змінює світ навколо нас.
+Переклад (EN): The artificial intelligence is rapidly developing and is changing the world around us.
+
+
+Демонстрацію завершено.
+"""
+
 """c)"""
 
 import torch
@@ -160,3 +194,4 @@ def generate_image_text_to_image():
 
     print("Відкриваємо зображення...")
     image.show()
+
